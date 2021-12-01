@@ -14,7 +14,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
  *
  * @author Patricia Munevar
  */
-@Document(collection = "perfumes")
+@Document(collection = "perfume")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
