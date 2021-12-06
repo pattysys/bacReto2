@@ -96,7 +96,9 @@ public class UserService {
         Optional<User> usuario = userRepository.authenticateUser(email, password);
 
         if (usuario.isEmpty()) {
-            return new User();
+            User user =  new User();
+            user.setName("NO DEFINIDO");
+            return  user;
         } else {
             return usuario.get();
         }

@@ -24,33 +24,38 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/api/fragance")
-@CrossOrigin("*")
+
 public class FraganceController {
        @Autowired
     private FraganceService accessoryService;
-       
+
+    @CrossOrigin
      @GetMapping("/all")
     public List<Fragance> getAll() {
         return accessoryService.getAll();
     }
-    
+
+    @CrossOrigin
     @GetMapping("/{reference}")
     public Optional<Fragance> getClothe(@PathVariable("reference") String reference) {
         return accessoryService.getClothe(reference);
     }
 
+    @CrossOrigin
     @PostMapping("/new")
     @ResponseStatus(HttpStatus.CREATED)
     public Fragance create(@RequestBody Fragance gadget) {
         return accessoryService.create(gadget);
     }
-    
+
+    @CrossOrigin
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
     public Fragance update(@RequestBody Fragance gadget) {
         return accessoryService.update(gadget);
     }
 
+    @CrossOrigin
     @DeleteMapping("/{reference}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("reference") String reference) {
