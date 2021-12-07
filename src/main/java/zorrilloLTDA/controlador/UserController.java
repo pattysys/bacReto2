@@ -3,9 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package zorrilloLTDA.controlador;
+
 import zorrilloLTDA.servicio.UserService;
 import zorrilloLTDA.modelo.User;
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 
@@ -26,10 +29,10 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/api/user")
+@CrossOrigin("*")
 
 public class UserController {
-    
-     @Autowired
+    @Autowired
     private UserService userService;
 
     @CrossOrigin
@@ -39,7 +42,7 @@ public class UserController {
     }
 
     @CrossOrigin
-     @PostMapping("/new")
+    @PostMapping("/new")
     @ResponseStatus(HttpStatus.CREATED)
     public User create(@RequestBody User user) {
         return userService.create(user);
@@ -53,11 +56,18 @@ public class UserController {
     }
 
     @CrossOrigin
+    @GetMapping("{id}")
+    public Optional<User> get(@PathVariable("id") int id) {
+        return userService.getUser(id);
+    }
+
+    @CrossOrigin
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id") int id) {
         return userService.delete(id);
     }
+
     @CrossOrigin
     @GetMapping("/{email}/{password}")
     public User authenticateUser(@PathVariable("email") String email, @PathVariable("password") String password) {
