@@ -55,6 +55,7 @@ public class FraganceController {
         return accessoryService.update(gadget);
     }
 
+
     @CrossOrigin
     @DeleteMapping("/{reference}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

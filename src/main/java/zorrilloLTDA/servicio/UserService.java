@@ -69,13 +69,18 @@ public class UserService {
                 if (user.getZone() != null) {
                     userDb.get().setZone(user.getZone());
                 }
+                if (user.getType() != null) {
+                    userDb.get().setType(user.getType());
+                }
                 
                 userRepository.update(userDb.get());
                 return userDb.get();
             } else {
+                user.setName("usuario no encontrado");
                 return user;
             }
         } else {
+            user.setName("no se envio el Id");
             return user;
         }
     }
