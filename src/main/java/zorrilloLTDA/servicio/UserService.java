@@ -102,7 +102,7 @@ public class UserService {
 
         if (usuario.isEmpty()) {
             User user =  new User();
-            user.setName("NO DEFINIDO");
+            //user.setName("NO DEFINIDO");
             return  user;
         } else {
             return usuario.get();
